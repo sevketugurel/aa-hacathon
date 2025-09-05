@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Zap, Volume2, Sparkles, Heart, MessageCircle, Share2, Eye, Brain, Play, MoreHorizontal, Gift } from 'lucide-react';
 import { rarityColors, rarityBadges } from '../data/mockData';
 import AIQuiz from './AIQuiz';
@@ -14,6 +14,8 @@ const NewsCard = ({ article, onCollect, isCollected, onCardClick, onQuizComplete
   const [showSocialShare, setShowSocialShare] = useState(false);
   const [showQuickLoop, setShowQuickLoop] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const hoverTimer = useRef(null);
   
   const moodEmojis = {
     "olumlu": "😊",
@@ -31,10 +33,21 @@ const NewsCard = ({ article, onCollect, isCollected, onCardClick, onQuizComplete
     setShowEmojiPicker(false);
   };
 
+  const onEnter = () => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setHovered(true), 180);
+  };
+  const onLeave = () => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setHovered(false), 120);
+  };
+
   return (
     <div
       className={`group relative rounded-xl p-5 mb-5 border transition-all duration-200 ${rarityColors[article.rarity]} shadow-sm hover:shadow-lg will-change-transform transform-gpu hover:scale-[1.02] hover:border-slate-300`}
       onClick={() => onCardClick(article.id)}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
     >        
       
       <div className="flex items-start justify-between mb-4">
@@ -259,7 +272,7 @@ const NewsCard = ({ article, onCollect, isCollected, onCardClick, onQuizComplete
       />
 
       {/* Hover Expanded Content: the card grows to reveal more content */}
-      <div className="overflow-hidden transition-all duration-200 max-h-0 group-hover:max-h-56">
+      <div className={`overflow-hidden transition-all duration-200 ${hovered ? 'max-h-56' : 'max-h-0'}`}>
         <div className="mt-2 p-3 bg-white/60 rounded-lg border border-slate-200">
           <div className="text-xs text-slate-500 mb-1">{article.category} • {article.readTime} • {article.publishedAt}</div>
           <div className="text-sm text-slate-700 mb-2">{article.summary}</div>
