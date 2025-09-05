@@ -15,6 +15,8 @@ const LeftSidebar = ({ user, activeSection, setActiveSection }) => {
     { id: 'settings', label: 'Ayarlar', icon: Settings }
   ];
 
+  const [expandDetails, setExpandDetails] = useState(false);
+
   return (
     <aside className="w-full h-full bg-white">
       <div className="p-6 sticky top-0">
@@ -80,6 +82,26 @@ const LeftSidebar = ({ user, activeSection, setActiveSection }) => {
                     style={{ width: `${Math.min((user.todayReadCount / user.dailyGoal) * 100, 100)}%` }}
                   />
                 </div>
+              </div>
+
+              <button onClick={() => setExpandDetails(!expandDetails)} className="w-full text-xs text-slate-600 hover:text-slate-800 text-left">{expandDetails ? 'Daha az bilgi' : 'Daha fazla bilgi'}</button>
+
+              <div className={`overflow-hidden transition-all ${expandDetails ? 'max-h-40' : 'max-h-0'}`}>
+                <div className="grid grid-cols-3 gap-2 mt-2 text-center">
+                  <div className="bg-white rounded border border-slate-200 p-2">
+                    <div className="text-sm font-semibold text-slate-800">{user.weekly?.reads || 0}</div>
+                    <div className="text-[11px] text-slate-600">Haftalık Okuma</div>
+                  </div>
+                  <div className="bg-white rounded border border-slate-200 p-2">
+                    <div className="text-sm font-semibold text-slate-800">{user.weekly?.cards || 0}</div>
+                    <div className="text-[11px] text-slate-600">Kart</div>
+                  </div>
+                  <div className="bg-white rounded border border-slate-200 p-2">
+                    <div className="text-sm font-semibold text-slate-800">{user.weekly?.xp || 0}</div>
+                    <div className="text-[11px] text-slate-600">XP</div>
+                  </div>
+                </div>
+                <div className="mt-2 text-[11px] text-slate-600">Hedef: {user.weekly?.goal?.target || 0} haber/hafta</div>
               </div>
             </div>
           </div>
