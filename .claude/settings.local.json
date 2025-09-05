@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/sevketugurel/Desktop/EkranGoruntuleri/**)",
+      "Read(//var/folders/rn/2x5ww4n14nb0j2blgsbhswb40000gq/T/TemporaryItems/NSIRD_screencaptureui_LzJMOw/**)",
+      "Read(//var/folders/rn/2x5ww4n14nb0j2blgsbhswb40000gq/T/TemporaryItems/NSIRD_screencaptureui_qAjVRU/**)",
+      "Read(//var/folders/rn/2x5ww4n14nb0j2blgsbhswb40000gq/T/TemporaryItems/NSIRD_screencaptureui_xFtKVR/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
