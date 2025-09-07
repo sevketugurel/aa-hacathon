@@ -9,9 +9,7 @@ const Header = ({ user, notifications, onNotificationClick, onAgendaClick }) => 
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">AA</span>
-            </div>
+            <img src="/aa-logo-amblem.png" alt="Anadolu Ajansı" className="w-9 h-9 object-contain rounded" />
             <div>
               <h1 className="text-base sm:text-xl font-bold text-slate-800 whitespace-nowrap">Haber Oyunu</h1>
               <p className="hidden sm:block text-xs text-slate-500">Ana Sayfa</p>
