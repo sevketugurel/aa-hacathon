@@ -18,8 +18,8 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
 
   return (
     <div className="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between p-6 border-b border-slate-200">
+      <div className="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-200">
           <div className="flex items-center space-x-3">
             <button
               onClick={onClose}
@@ -44,8 +44,8 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
           </div>
         </div>
 
-        <div className="p-6">
-          <div className="mb-6">
+        <div className="p-4 sm:p-6">
+          <div className="mb-4 sm:mb-6">
             <div className="flex items-center space-x-2 mb-3">
               <span className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">
                 {article.category}
@@ -72,7 +72,7 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
             </div>
           </div>
 
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <img 
               src={article.image} 
               alt={article.title}
@@ -80,7 +80,7 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
             />
           </div>
 
-          <div className="prose max-w-none mb-6">
+          <div className="prose max-w-none mb-4 sm:mb-6">
             <p className="text-lg text-slate-700 leading-relaxed mb-4">
               {article.summary}
             </p>
@@ -90,7 +90,7 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
           </div>
 
           {/* Kronolojik Akış */}
-          <div className="border-t border-slate-200 pt-6 mb-6">
+          <div className="border-t border-slate-200 pt-4 sm:pt-6 mb-4 sm:mb-6">
             <h3 className="text-lg font-semibold text-slate-800 mb-4">Kronolojik Akış</h3>
           {timeline.length === 0 ? (
               <div className="text-sm text-slate-600">Bu konu için henüz başka gelişme bulunamadı.</div>
@@ -117,7 +117,7 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
             )}
           </div>
 
-          <div className="border-t border-slate-200 pt-6 mb-6">
+          <div className="border-t border-slate-200 pt-4 sm:pt-6 mb-4 sm:mb-6">
             <div className="flex flex-wrap gap-2 mb-4">
               <span className="text-sm font-medium text-slate-700 mr-2">Etiketler:</span>
               {article.tags.map((tag) => (
@@ -165,7 +165,7 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
           </div>
 
           {/* Yorumlar */}
-          <div className="border-t border-slate-200 pt-6">
+          <div className="border-t border-slate-200 pt-4 sm:pt-6">
             <h3 className="text-lg font-semibold text-slate-800 mb-4">Yorumlar</h3>
             {article.comments && article.comments.length > 0 ? (
               <div className="space-y-3">
@@ -188,18 +188,18 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
           </div>
         </div>
 
-        <div className="border-t border-slate-200 p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <button className="flex items-center space-x-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors font-medium">
+        <div className="border-t border-slate-200 p-4 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <button className="flex items-center space-x-2 px-2.5 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors font-medium text-xs sm:text-sm">
                 <Heart className="w-4 h-4" />
                 <span>Beğen</span>
               </button>
-              <button className="flex items-center space-x-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium">
+              <button className="flex items-center space-x-2 px-2.5 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium text-xs sm:text-sm">
                 <Share2 className="w-4 h-4" />
                 <span>Paylaş</span>
               </button>
-              <button className="flex items-center space-x-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium">
+              <button className="flex items-center space-x-2 px-2.5 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium text-xs sm:text-sm">
                 <Bookmark className="w-4 h-4" />
                 <span>Kaydet</span>
               </button>
@@ -208,7 +208,7 @@ const CardDetail = ({ article, onClose, onCollect, isCollected, onOpenArticle })
             <button
               onClick={() => onCollect(article.id)}
               disabled={isCollected}
-              className={`px-8 py-3 rounded-lg font-medium transition-all ${
+              className={`w-full sm:w-auto px-6 py-3 rounded-lg font-medium transition-all ${
                 isCollected 
                   ? 'bg-slate-200 text-slate-500 cursor-not-allowed' 
                   : 'bg-slate-800 text-white hover:bg-slate-700'

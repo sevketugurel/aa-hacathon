@@ -45,21 +45,21 @@ const VerticalTimeline = ({ items = [], onSelect, onOpen }) => {
   }, [active]);
 
   return (
-    <div className="relative">
+    <div className="relative pr-2">
       <div className="absolute left-3 top-0 bottom-0 w-[2px] bg-slate-200" />
       <div className="space-y-4">
         {data.map((item, idx) => {
           const isActive = active === item.id;
           const important = (item.xpValue && item.xpValue >= 25) || (item.shareCount && item.shareCount > 500);
           return (
-            <div key={item.id} className="relative flex items-start" ref={(el) => { if (el) itemRefs.current[item.id] = el; }}>
+            <div key={item.id} className="relative flex items-start min-w-0" ref={(el) => { if (el) itemRefs.current[item.id] = el; }}>
               {/* Dot */}
               <div className="relative flex-shrink-0" style={{ width: '24px' }}>
                 <div className={`w-3 h-3 rounded-full ring-2 ring-white translate-x-[6px] mt-2 ${isActive ? 'bg-blue-600' : 'bg-slate-400'}`} />
               </div>
 
               {/* Content */}
-              <div className={`flex-1 transition-all ${isActive ? 'scale-[1.01]' : ''}`}>
+              <div className={`flex-1 transition-all min-w-0 ${isActive ? 'scale-[1.01]' : ''}`}>
                 <div className="flex items-start justify-between">
                   <div className="text-xs text-slate-500">
                     <div>{item.publishedAt || '—'}</div>
@@ -87,9 +87,9 @@ const VerticalTimeline = ({ items = [], onSelect, onOpen }) => {
                 {isActive && (
                   <div className="mt-3 border rounded-lg bg-white shadow-sm border-slate-200">
                     <div className="p-4">
-                      <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4">
                         {item.image && (
-                          <img src={item.image} alt={item.title} className="w-44 h-28 object-cover rounded" />
+                          <img src={item.image} alt={item.title} className="hidden sm:block w-44 h-28 object-cover rounded" />
                         )}
                         <div className="flex-1 min-w-0">
                           {/* Meta chips */}
@@ -125,9 +125,9 @@ const VerticalTimeline = ({ items = [], onSelect, onOpen }) => {
                             )}
                           </div>
 
-                          <div className="flex items-center gap-2">
-                            <button onClick={() => onOpen && onOpen(item.id)} className="px-3 py-1.5 text-xs rounded bg-slate-800 text-white hover:bg-slate-700">Haberi Tam Aç</button>
-                            <button onClick={() => setActive(null)} className="px-3 py-1.5 text-xs rounded bg-slate-100 text-slate-700 hover:bg-slate-200">Kapat</button>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <button onClick={() => onOpen && onOpen(item.id)} className="px-3 py-1.5 text-xs rounded bg-slate-800 text-white hover:bg-slate-700 w-full sm:w-auto">Haberi Tam Aç</button>
+                            <button onClick={() => setActive(null)} className="px-3 py-1.5 text-xs rounded bg-slate-100 text-slate-700 hover:bg-slate-200 w-full sm:w-auto">Kapat</button>
                           </div>
                         </div>
                       </div>

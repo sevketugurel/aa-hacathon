@@ -140,15 +140,20 @@ const PremiumContent = ({ user, onUpgrade, onUnlock, isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4">
       <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-slate-200 p-6">
+        <div className="sticky top-0 z-20 bg-white border-b border-slate-200 p-4 sm:p-6 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
+              <button onClick={onClose} className="mr-1 sm:mr-2 p-2 -ml-2 rounded hover:bg-slate-100">
+                {/* back arrow */}
+                <span className="sr-only">Geri</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="#334155" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
               <div className="w-10 h-10 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
                 <Crown className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-slate-800">Premium İçerik</h2>
-                <p className="text-slate-600">Haber deneyimini bir üst seviyeye taşı</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800">Premium İçerik</h2>
+                <p className="hidden sm:block text-slate-600">Haber deneyimini bir üst seviyeye taşı</p>
               </div>
             </div>
             <button
@@ -160,7 +165,7 @@ const PremiumContent = ({ user, onUpgrade, onUnlock, isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {/* User Stats */}
           <div className="bg-slate-50 rounded-lg p-4 mb-8">
             <div className="flex items-center justify-between">
@@ -188,7 +193,7 @@ const PremiumContent = ({ user, onUpgrade, onUnlock, isOpen, onClose }) => {
           {/* Premium Tiers */}
           <div className="mb-8">
             <h3 className="text-xl font-bold text-slate-800 mb-6">Premium Planlar</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {premiumTiers.map((tier) => (
                 <div
                   key={tier.id}

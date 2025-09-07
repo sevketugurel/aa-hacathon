@@ -16,9 +16,9 @@ const NewsFeed = ({ articles, onCollectCard, collectedCards, onCardClick, onQuiz
 
   return (
     <div className="space-y-4">
-      <div className="sticky top-0 z-10 bg-slate-50/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur flex items-center justify-between py-3 mb-2 border-b border-slate-200">
-        <h2 className="text-xl font-semibold text-slate-800">Ana Sayfa</h2>
-        <div className="flex items-center space-x-3">
+      <div className="md:sticky md:top-0 md:z-10 md:bg-slate-50/80 md:backdrop-blur md:supports-[backdrop-filter]:backdrop-blur flex flex-wrap items-center gap-2 justify-between py-2 sm:py-3 mb-2 border-b border-slate-200">
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-800">Ana Sayfa</h2>
+        <div className="flex items-center flex-wrap gap-2">
           <select className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm font-medium">
             <option>En Yeni</option>
             <option>En Popüler</option>
@@ -29,7 +29,7 @@ const NewsFeed = ({ articles, onCollectCard, collectedCards, onCardClick, onQuiz
           <select 
             value={locationFilter} 
             onChange={(e) => setLocationFilter(e.target.value)}
-            className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm font-medium"
+            className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium"
           >
             <option value="all">Tüm Lokasyonlar</option>
             {locations.map(location => (
@@ -40,7 +40,7 @@ const NewsFeed = ({ articles, onCollectCard, collectedCards, onCardClick, onQuiz
           <select 
             value={moodFilter} 
             onChange={(e) => setMoodFilter(e.target.value)}
-            className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm font-medium"
+            className="bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm font-medium"
           >
             <option value="all">Tüm Ruh Halleri</option>
             {moods.map(mood => (

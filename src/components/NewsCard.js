@@ -77,8 +77,8 @@ const NewsCard = ({ article, onCollect, isCollected, onCardClick, onQuizComplete
         </div>
       </div>
 
-      <div className="flex space-x-4 min-w-0">
-        <div className="flex-1 min-w-0">
+      <div className="md:flex md:space-x-4 min-w-0">
+        <div className="order-2 md:order-1 flex-1 min-w-0">
           <div className="flex items-center space-x-2 mb-3">
             <span className="text-sm font-medium text-slate-600">@{article.author}</span>
             <span className="text-xs text-slate-400">•</span>
@@ -118,8 +118,8 @@ const NewsCard = ({ article, onCollect, isCollected, onCardClick, onQuizComplete
             </div>
           )}
 
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="flex flex-wrap items-center gap-2 flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-2 w-full justify-start">
+            
               <button
             onClick={(e) => { e.stopPropagation(); setShowSummary(!showSummary); }}
                 className="flex items-center space-x-2 px-3 py-1.5 md:px-4 md:py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-xs md:text-sm font-medium whitespace-nowrap"
@@ -198,16 +198,15 @@ const NewsCard = ({ article, onCollect, isCollected, onCardClick, onQuizComplete
                   </div>
                 )}
               </div>
-            </div>
             {/* Sağ tarafta büyük CTA yok; kart paketi menüye taşındı */}
           </div>
         </div>
 
-        <div className="w-48 flex-shrink-0 relative">
+        <div className="order-1 md:order-2 w-full md:w-48 flex-shrink-0 relative mb-3 md:mb-0">
           <img 
             src={article.image} 
             alt={article.title}
-            className="w-full h-32 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+            className="w-full h-40 md:h-32 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => onCardClick(article.id)}
           />
           <div className="hidden group-hover:flex absolute inset-x-0 bottom-1 px-2 py-1 text-[11px] bg-black/40 text-white rounded-b-lg items-center justify-between">

@@ -23,6 +23,11 @@ body {
   overscroll-behavior: none;
 }
 
+/* Safe area for mobile */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 /* Subtle thin scrollbars */
 * {
   scrollbar-width: thin;
